@@ -3,20 +3,20 @@ package com.oldlane.springbootinit.controller;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.google.gson.Gson;
+import com.oldlane.myapiclientsdk.client.MyApiClient;
 import com.oldlane.springbootinit.annotation.AuthCheck;
-import com.oldlane.springbootinit.common.BaseResponse;
-import com.oldlane.springbootinit.common.DeleteRequest;
-import com.oldlane.springbootinit.common.ErrorCode;
-import com.oldlane.springbootinit.common.ResultUtils;
+import com.oldlane.springbootinit.common.*;
 import com.oldlane.springbootinit.constant.CommonConstant;
 import com.oldlane.springbootinit.constant.UserConstant;
 import com.oldlane.springbootinit.exception.BusinessException;
 import com.oldlane.springbootinit.exception.ThrowUtils;
 import com.oldlane.springbootinit.model.dto.interfaceinfo.InterfaceInfoAddRequest;
+import com.oldlane.springbootinit.model.dto.interfaceinfo.InterfaceInfoInvokeRequest;
 import com.oldlane.springbootinit.model.dto.interfaceinfo.InterfaceInfoQueryRequest;
 import com.oldlane.springbootinit.model.dto.interfaceinfo.InterfaceInfoUpdateRequest;
 import com.oldlane.springbootinit.model.entity.InterfaceInfo;
 import com.oldlane.springbootinit.model.entity.User;
+import com.oldlane.springbootinit.model.enums.InterfaceInfoStatusEnum;
 import com.oldlane.springbootinit.model.vo.InterfaceInfoVO;
 import com.oldlane.springbootinit.service.InterfaceInfoService;
 import com.oldlane.springbootinit.service.UserService;
@@ -46,7 +46,100 @@ public class InterfaceInfoController {
     @Resource
     private UserService userService;
 
+    @Resource
+    private MyApiClient myApiClient;
+
     private final static Gson GSON = new Gson();
+
+    /**
+     * 在线调用接口
+     *
+     * @param interfaceInfoInvokeRequest
+     * @return
+     */
+    @PostMapping("/invoke")
+    public BaseResponse<Object> invokeInterfaceInfo(@RequestBody InterfaceInfoInvokeRequest interfaceInfoInvokeRequest, HttpServletRequest request) {
+        if (interfaceInfoInvokeRequest == null || interfaceInfoInvokeRequest.getId() <= 0) {
+            throw new BusinessException(ErrorCode.PARAMS_ERROR);
+        }
+        long id = interfaceInfoInvokeRequest.getId();
+        String userRequestParams = interfaceInfoInvokeRequest.getUserRequestParams();
+        // 判断是否存在
+        InterfaceInfo oldInterfaceInfo = interfaceInfoService.getById(id);
+        if (oldInterfaceInfo == null) {
+            throw new BusinessException(ErrorCode.NOT_FOUND_ERROR);
+        }
+        if (oldInterfaceInfo.getStatus() != InterfaceInfoStatusEnum.ONLINE.getValue()) {
+            throw new BusinessException(ErrorCode.OPERATION_ERROR, "接口不可用");
+        }
+        //获取当前用户密钥
+        User user = userService.getLoginUser(request);
+        String accessKey = user.getAccessKey();
+        String secretKey = user.getSecretKey();
+        MyApiClient tempClient = new MyApiClient(accessKey, secretKey);
+        com.oldlane.myapiclientsdk.model.User user1 = GSON.fromJson(userRequestParams, com.oldlane.myapiclientsdk.model.User.class);
+        String usernameByPost = tempClient.getUsernameByPost(user1);
+        return ResultUtils.success(usernameByPost);
+    }
+
+    /**
+     * 上线接口（仅管理员）
+     *
+     * @param idRequest
+     * @return
+     */
+    @PostMapping("/online")
+    @AuthCheck(mustRole = UserConstant.ADMIN_ROLE)
+    public BaseResponse<Boolean> onlineInterfaceInfo(@RequestBody IdRequest idRequest) {
+        if (idRequest == null || idRequest.getId() <= 0) {
+            throw new BusinessException(ErrorCode.PARAMS_ERROR);
+        }
+        long id = idRequest.getId();
+        // 判断是否存在
+        InterfaceInfo oldInterfaceInfo = interfaceInfoService.getById(id);
+        if (oldInterfaceInfo == null) {
+            throw new BusinessException(ErrorCode.NOT_FOUND_ERROR);
+        }
+        // 判断该接口是否可以调用
+        com.oldlane.myapiclientsdk.model.User user = new com.oldlane.myapiclientsdk.model.User();
+        user.setUsername("test");
+        String username = myApiClient.getUsernameByPost(user);
+        if (StringUtils.isBlank(username)) {
+            throw new BusinessException(ErrorCode.SYSTEM_ERROR, "接口验证失败");
+        }
+        // 仅本人或管理员可修改
+        InterfaceInfo interfaceInfo = new InterfaceInfo();
+        interfaceInfo.setId(id);
+        interfaceInfo.setStatus(InterfaceInfoStatusEnum.ONLINE.getValue());
+        boolean result = interfaceInfoService.updateById(interfaceInfo);
+        return ResultUtils.success(result);
+    }
+
+    /**
+     * 下线接口（仅管理员）
+     *
+     * @param idRequest
+     * @return
+     */
+    @PostMapping("/offline")
+    @AuthCheck(mustRole = UserConstant.ADMIN_ROLE)
+    public BaseResponse<Boolean> offlineInterfaceInfo(@RequestBody IdRequest idRequest) {
+        if (idRequest == null || idRequest.getId() <= 0) {
+            throw new BusinessException(ErrorCode.PARAMS_ERROR);
+        }
+        long id = idRequest.getId();
+        // 判断是否存在
+        InterfaceInfo oldInterfaceInfo = interfaceInfoService.getById(id);
+        if (oldInterfaceInfo == null) {
+            throw new BusinessException(ErrorCode.NOT_FOUND_ERROR);
+        }
+        // 仅本人或管理员可修改
+        InterfaceInfo interfaceInfo = new InterfaceInfo();
+        interfaceInfo.setId(id);
+        interfaceInfo.setStatus(InterfaceInfoStatusEnum.OFFLINE.getValue());
+        boolean result = interfaceInfoService.updateById(interfaceInfo);
+        return ResultUtils.success(result);
+    }
 
     // region 增删改查
 

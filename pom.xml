@@ -10,13 +10,20 @@
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
     <groupId>com.myapi</groupId>
-    <artifactId>springboot-init</artifactId>
+    <artifactId>myapi-backend</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <name>springboot-init</name>
+    <name>myapi-backend</name>
     <properties>
         <java.version>1.8</java.version>
     </properties>
     <dependencies>
+
+        <dependency>
+            <groupId>com.oldlane</groupId>
+            <artifactId>myapi-client-sdk</artifactId>
+            <version>0.0.1-SNAPSHOT</version>
+        </dependency>
+
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-freemarker</artifactId>
