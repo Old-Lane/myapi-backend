@@ -1,22 +1,21 @@
-package com.oldlane.springbootinit.model.entity;
+package com.oldlane.myapicommon.model.entity;
 
 import com.baomidou.mybatisplus.annotation.IdType;
 import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
-import java.io.Serializable;
-import java.util.Date;
 import lombok.Data;
 
+import java.io.Serializable;
+import java.util.Date;
+
 /**
- * 帖子收藏
+ * 帖子点赞
  *
- * @author <a href="https://github.com/liyupi">程序员鱼皮</a>
- * @from <a href="https://yupi.icu">编程导航知识星球</a>
- **/
-@TableName(value = "post_favour")
+ */
+@TableName(value = "post_thumb")
 @Data
-public class PostFavour implements Serializable {
+public class PostThumb implements Serializable {
 
     /**
      * id

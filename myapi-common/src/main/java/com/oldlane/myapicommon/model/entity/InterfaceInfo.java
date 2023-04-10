@@ -1,4 +1,4 @@
-package com.oldlane.springbootinit.model.entity;
+package com.oldlane.myapicommon.model.entity;
 
 import com.baomidou.mybatisplus.annotation.*;
 import lombok.Data;

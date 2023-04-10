@@ -7,12 +7,12 @@ import cn.hutool.crypto.digest.DigestUtil;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.core.toolkit.CollectionUtils;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
+import com.oldlane.myapicommon.model.entity.User;
 import com.oldlane.springbootinit.exception.BusinessException;
 import com.oldlane.springbootinit.common.ErrorCode;
 import com.oldlane.springbootinit.constant.CommonConstant;
 import com.oldlane.springbootinit.mapper.UserMapper;
 import com.oldlane.springbootinit.model.dto.user.UserQueryRequest;
-import com.oldlane.springbootinit.model.entity.User;
 import com.oldlane.springbootinit.model.enums.UserRoleEnum;
 import com.oldlane.springbootinit.model.vo.LoginUserVO;
 import com.oldlane.springbootinit.model.vo.UserVO;
@@ -20,7 +20,6 @@ import com.oldlane.springbootinit.service.UserService;
 import com.oldlane.springbootinit.utils.SqlUtils;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Random;
 import java.util.stream.Collectors;
 import javax.servlet.http.HttpServletRequest;
 import lombok.extern.slf4j.Slf4j;
@@ -33,8 +32,6 @@ import org.springframework.util.DigestUtils;
 /**
  * 用户服务实现
  *
- * @author <a href="https://github.com/liyupi">程序员鱼皮</a>
- * @from <a href="https://yupi.icu">编程导航知识星球</a>
  */
 @Service
 @Slf4j

@@ -1,6 +1,7 @@
 package com.oldlane.springbootinit.controller;
 
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
+import com.oldlane.myapicommon.model.entity.User;
 import com.oldlane.springbootinit.exception.BusinessException;
 import com.oldlane.springbootinit.exception.ThrowUtils;
 import com.oldlane.springbootinit.common.BaseResponse;
@@ -10,7 +11,6 @@ import com.oldlane.springbootinit.model.dto.post.PostQueryRequest;
 import com.oldlane.springbootinit.model.dto.postfavour.PostFavourAddRequest;
 import com.oldlane.springbootinit.model.dto.postfavour.PostFavourQueryRequest;
 import com.oldlane.springbootinit.model.entity.Post;
-import com.oldlane.springbootinit.model.entity.User;
 import com.oldlane.springbootinit.model.vo.PostVO;
 import com.oldlane.springbootinit.service.PostFavourService;
 import com.oldlane.springbootinit.service.PostService;
@@ -26,8 +26,6 @@ import org.springframework.web.bind.annotation.RestController;
 /**
  * 帖子收藏接口
  *
- * @author <a href="https://github.com/liyupi">程序员鱼皮</a>
- * @from <a href="https://yupi.icu">编程导航知识星球</a>
  */
 @RestController
 @RequestMapping("/post_favour")

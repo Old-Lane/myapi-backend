@@ -1,14 +1,13 @@
 package com.oldlane.springbootinit.service.impl;
 
+import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.core.conditions.update.UpdateWrapper;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
+import com.oldlane.myapicommon.model.entity.UserInterfaceInfo;
 import com.oldlane.springbootinit.common.ErrorCode;
 import com.oldlane.springbootinit.exception.BusinessException;
-import com.oldlane.springbootinit.exception.ThrowUtils;
 import com.oldlane.springbootinit.mapper.UserInterfaceInfoMapper;
-import com.oldlane.springbootinit.model.entity.UserInterfaceInfo;
 import com.oldlane.springbootinit.service.UserInterfaceInfoService;
-import org.apache.commons.lang3.StringUtils;
 import org.springframework.stereotype.Service;
 
 /**

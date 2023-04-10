@@ -1,6 +1,7 @@
 package com.oldlane.springbootinit.controller;
 
 import cn.hutool.core.io.FileUtil;
+import com.oldlane.myapicommon.model.entity.User;
 import com.oldlane.springbootinit.exception.BusinessException;
 import com.oldlane.springbootinit.common.BaseResponse;
 import com.oldlane.springbootinit.common.ErrorCode;
@@ -8,7 +9,6 @@ import com.oldlane.springbootinit.common.ResultUtils;
 import com.oldlane.springbootinit.constant.FileConstant;
 import com.oldlane.springbootinit.manager.CosManager;
 import com.oldlane.springbootinit.model.dto.file.UploadFileRequest;
-import com.oldlane.springbootinit.model.entity.User;
 import com.oldlane.springbootinit.model.enums.FileUploadBizEnum;
 import com.oldlane.springbootinit.service.UserService;
 import java.io.File;
@@ -26,8 +26,6 @@ import org.springframework.web.multipart.MultipartFile;
 /**
  * 文件接口
  *
- * @author <a href="https://github.com/liyupi">程序员鱼皮</a>
- * @from <a href="https://yupi.icu">编程导航知识星球</a>
  */
 @RestController
 @RequestMapping("/file")

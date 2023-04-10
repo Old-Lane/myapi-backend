@@ -1,6 +1,7 @@
 package com.oldlane.springbootinit.controller;
 
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
+import com.oldlane.myapicommon.model.entity.User;
 import com.oldlane.springbootinit.annotation.AuthCheck;
 import com.oldlane.springbootinit.exception.BusinessException;
 import com.oldlane.springbootinit.exception.ThrowUtils;
@@ -16,7 +17,6 @@ import com.oldlane.springbootinit.model.dto.user.UserQueryRequest;
 import com.oldlane.springbootinit.model.dto.user.UserRegisterRequest;
 import com.oldlane.springbootinit.model.dto.user.UserUpdateMyRequest;
 import com.oldlane.springbootinit.model.dto.user.UserUpdateRequest;
-import com.oldlane.springbootinit.model.entity.User;
 import com.oldlane.springbootinit.model.vo.LoginUserVO;
 import com.oldlane.springbootinit.model.vo.UserVO;
 import com.oldlane.springbootinit.service.UserService;
@@ -40,8 +40,6 @@ import org.springframework.web.bind.annotation.RestController;
 /**
  * 用户接口
  *
- * @author <a href="https://github.com/liyupi">程序员鱼皮</a>
- * @from <a href="https://yupi.icu">编程导航知识星球</a>
  */
 @RestController
 @RequestMapping("/user")

@@ -1,7 +1,9 @@
 package com.oldlane.springbootinit.mapper;
 
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
-import com.oldlane.springbootinit.model.entity.UserInterfaceInfo;
+import com.oldlane.myapicommon.model.entity.UserInterfaceInfo;
+
+import java.util.List;
 
 /**
 * @author lenovo
@@ -10,7 +12,7 @@ import com.oldlane.springbootinit.model.entity.UserInterfaceInfo;
 * @Entity generator.entity.UserInterfaceInfo
 */
 public interface UserInterfaceInfoMapper extends BaseMapper<UserInterfaceInfo> {
-
+    List<UserInterfaceInfo> listTopInvokeInterfaceInfo(int limit);
 }
 
 

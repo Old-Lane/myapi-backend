@@ -4,6 +4,9 @@ import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.google.gson.Gson;
+import com.oldlane.myapicommon.model.entity.PostFavour;
+import com.oldlane.myapicommon.model.entity.PostThumb;
+import com.oldlane.myapicommon.model.entity.User;
 import com.oldlane.springbootinit.exception.BusinessException;
 import com.oldlane.springbootinit.exception.ThrowUtils;
 import com.oldlane.springbootinit.common.ErrorCode;
@@ -14,9 +17,6 @@ import com.oldlane.springbootinit.mapper.PostThumbMapper;
 import com.oldlane.springbootinit.model.dto.post.PostEsDTO;
 import com.oldlane.springbootinit.model.dto.post.PostQueryRequest;
 import com.oldlane.springbootinit.model.entity.Post;
-import com.oldlane.springbootinit.model.entity.PostFavour;
-import com.oldlane.springbootinit.model.entity.PostThumb;
-import com.oldlane.springbootinit.model.entity.User;
 import com.oldlane.springbootinit.model.vo.PostVO;
 import com.oldlane.springbootinit.model.vo.UserVO;
 import com.oldlane.springbootinit.service.PostService;
@@ -50,8 +50,6 @@ import org.springframework.stereotype.Service;
 /**
  * 帖子服务实现
  *
- * @author <a href="https://github.com/liyupi">程序员鱼皮</a>
- * @from <a href="https://yupi.icu">编程导航知识星球</a>
  */
 @Service
 @Slf4j

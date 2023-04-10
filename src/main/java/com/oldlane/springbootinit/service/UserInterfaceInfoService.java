@@ -1,7 +1,7 @@
 package com.oldlane.springbootinit.service;
 
 import com.baomidou.mybatisplus.extension.service.IService;
-import com.oldlane.springbootinit.model.entity.UserInterfaceInfo;
+import com.oldlane.myapicommon.model.entity.UserInterfaceInfo;
 
 /**
 * @author lenovo

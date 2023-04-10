@@ -5,12 +5,12 @@ import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
+import com.oldlane.myapicommon.model.entity.PostFavour;
+import com.oldlane.myapicommon.model.entity.User;
 import com.oldlane.springbootinit.exception.BusinessException;
 import com.oldlane.springbootinit.common.ErrorCode;
 import com.oldlane.springbootinit.mapper.PostFavourMapper;
 import com.oldlane.springbootinit.model.entity.Post;
-import com.oldlane.springbootinit.model.entity.PostFavour;
-import com.oldlane.springbootinit.model.entity.User;
 import com.oldlane.springbootinit.service.PostFavourService;
 import com.oldlane.springbootinit.service.PostService;
 import javax.annotation.Resource;
@@ -21,8 +21,6 @@ import org.springframework.transaction.annotation.Transactional;
 /**
  * 帖子收藏服务实现
  *
- * @author <a href="https://github.com/liyupi">程序员鱼皮</a>
- * @from <a href="https://yupi.icu">编程导航知识星球</a>
  */
 @Service
 public class PostFavourServiceImpl extends ServiceImpl<PostFavourMapper, PostFavour>

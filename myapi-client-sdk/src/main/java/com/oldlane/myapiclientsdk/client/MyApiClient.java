@@ -16,11 +16,10 @@ import static com.oldlane.myapiclientsdk.utils.SignUtils.genSign;
 /**
  * 调用第三方接口的客户端
  *
- * @author yupi
  */
 public class MyApiClient {
 
-    private static final String GATEWAY_HOST = "http://localhost:8123";
+    private static final String GATEWAY_HOST = "http://localhost:8090";
 
     private String accessKey;
 

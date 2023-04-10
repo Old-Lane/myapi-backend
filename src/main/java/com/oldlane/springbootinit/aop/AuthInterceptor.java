@@ -1,9 +1,9 @@
 package com.oldlane.springbootinit.aop;
 
+import com.oldlane.myapicommon.model.entity.User;
 import com.oldlane.springbootinit.annotation.AuthCheck;
 import com.oldlane.springbootinit.common.ErrorCode;
 import com.oldlane.springbootinit.exception.BusinessException;
-import com.oldlane.springbootinit.model.entity.User;
 import com.oldlane.springbootinit.model.enums.UserRoleEnum;
 import com.oldlane.springbootinit.service.UserService;
 
@@ -21,8 +21,6 @@ import org.springframework.web.context.request.ServletRequestAttributes;
 /**
  * 权限校验 AOP
  *
- * @author <a href="https://github.com/liyupi">程序员鱼皮</a>
- * @from <a href="https://yupi.icu">编程导航知识星球</a>
  */
 @Aspect
 @Component

@@ -4,6 +4,8 @@ import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.google.gson.Gson;
 import com.oldlane.myapiclientsdk.client.MyApiClient;
+import com.oldlane.myapicommon.model.entity.InterfaceInfo;
+import com.oldlane.myapicommon.model.entity.User;
 import com.oldlane.springbootinit.annotation.AuthCheck;
 import com.oldlane.springbootinit.common.*;
 import com.oldlane.springbootinit.constant.CommonConstant;
@@ -14,10 +16,7 @@ import com.oldlane.springbootinit.model.dto.interfaceinfo.InterfaceInfoAddReques
 import com.oldlane.springbootinit.model.dto.interfaceinfo.InterfaceInfoInvokeRequest;
 import com.oldlane.springbootinit.model.dto.interfaceinfo.InterfaceInfoQueryRequest;
 import com.oldlane.springbootinit.model.dto.interfaceinfo.InterfaceInfoUpdateRequest;
-import com.oldlane.springbootinit.model.entity.InterfaceInfo;
-import com.oldlane.springbootinit.model.entity.User;
 import com.oldlane.springbootinit.model.enums.InterfaceInfoStatusEnum;
-import com.oldlane.springbootinit.model.vo.InterfaceInfoVO;
 import com.oldlane.springbootinit.service.InterfaceInfoService;
 import com.oldlane.springbootinit.service.UserService;
 import lombok.extern.slf4j.Slf4j;
@@ -32,8 +31,6 @@ import java.util.List;
 /**
  * 帖子接口
  *
- * @author <a href="https://github.com/liyupi">程序员鱼皮</a>
- * @from <a href="https://yupi.icu">编程导航知识星球</a>
  */
 @RestController
 @RequestMapping("/interfaceInfo")

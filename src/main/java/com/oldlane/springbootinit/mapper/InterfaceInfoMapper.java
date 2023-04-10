@@ -1,7 +1,7 @@
 package com.oldlane.springbootinit.mapper;
 
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
-import com.oldlane.springbootinit.model.entity.InterfaceInfo;
+import com.oldlane.myapicommon.model.entity.InterfaceInfo;
 
 /**
 * @author lenovo
